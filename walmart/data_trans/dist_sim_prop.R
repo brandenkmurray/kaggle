@@ -4,10 +4,11 @@ library(proxy)
 library(qlcMatrix)
 library(cccd)
 library(igraph)
-setwd("/home/branden/Documents/kaggle/walmart")
+library(bit64)
+setwd("/media/SSHD1/kaggle/walmart")
 
 # Load data
-ts1Trans <- data.table(read_csv("./data_trans/ts1Trans3_prop.csv", col_types=paste(replicate(6839, "n"), collapse = "")))
+ts1Trans <- fread("/media/branden/SSHD1/kaggle/walmart/data_trans/ts1Trans3_abs.csv", header = TRUE)
 # Department distance/similarity
 ts1_dept <- as.matrix(ts1Trans[, 47:115, with=FALSE], nrow=nrow(ts1Trans))
 ts1_dept_Matrix <- Matrix(ts1_dept)
